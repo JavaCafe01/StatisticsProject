@@ -27,7 +27,7 @@ def graphData(num, x_list, y_list):
 #Lists that holds all the raw data
 dataList = []
 
-with open('tableChart.tsv') as tsvfile:
+with open('countryChart.tsv') as tsvfile:
     reader = csv.reader(tsvfile, delimiter='\t')
     for row in reader:
         dataList.append(row)
