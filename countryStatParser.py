@@ -3,10 +3,6 @@ import matplotlib.pyplot as plt; plt.rcdefaults();
 import numpy as np
 import matplotlib.pyplot as plt
 
-def split_list(a_list):
-    half = len(a_list)//2
-    return a_list[:half], a_list[half:]
-
 def getDataByIndex(data, index):
     anyList = []
     for subData in data:
