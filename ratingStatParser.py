@@ -2,9 +2,11 @@ import csv
 import numpy as np
 import matplotlib.pyplot as plt
 
-#Index 3 = US
+#Index 3 = Canada
 #Index 4 = Germany
 #Index 5 = India
+
+#ALl america vars are actually canada
 
 amerGoodRates = []
 amerBadRates = []
@@ -33,7 +35,7 @@ def save_to_lists(index, string):
         badDict[index].append(number)
 
 
-with open('ratingStats.csv') as csvFile:
+with open('stats.csv') as csvFile:
     reader = csv.reader(csvFile, delimiter=',')
     for row in reader:
         if row[3]:
@@ -41,7 +43,8 @@ with open('ratingStats.csv') as csvFile:
                 string = row[i]
                 if "-" in string:
                     string = '0'
-                save_to_lists(i, string)
+                else:
+                    save_to_lists(i, string)
             
 
 goodTotal = len(goodDict[4]) + len(goodDict[5]) + len(goodDict[6])
@@ -76,7 +79,7 @@ print(len(badDict[6]))
 
 plt.bar(ind, indRates, width=0.8, label='India', color='#AA650A', bottom=germRates+amerRates)
 plt.bar(ind, germRates, width=0.8, label='Germany', color='#AA0A0A', bottom=amerRates)
-plt.bar(ind, amerRates, width=0.8, label='America', color='#FF880A')
+plt.bar(ind, amerRates, width=0.8, label='Canada', color='#FF880A')
 
 plt.xticks(ind, xLabel)
 plt.ylabel("Percentage")
