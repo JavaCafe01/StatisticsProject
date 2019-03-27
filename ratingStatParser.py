@@ -55,13 +55,23 @@ germRates = np.array([len(goodDict[5])/goodTotal * 100, len(badDict[5])/badTotal
 indRates = np.array([len(goodDict[6])/goodTotal * 100, len(badDict[6])/badTotal * 100])
 ind = [x for x, _ in enumerate(xLabel)]
 
-
+# Prints percentages
 print(len(goodDict[4])/goodTotal * 100)
 print(len(badDict[4])/badTotal * 100)
 print(len(goodDict[5])/goodTotal * 100)
 print(len(badDict[5])/badTotal * 100)
 print(len(goodDict[6])/goodTotal * 100)
 print(len(badDict[6])/badTotal * 100)
+
+#Prints values
+print(len(goodDict[4]))
+print(len(badDict[4]))
+print(len(goodDict[5]))
+print(len(badDict[5]))
+print(len(goodDict[6]))
+print(len(badDict[6]))
+
+
 
 
 plt.bar(ind, indRates, width=0.8, label='India', color='#AA650A', bottom=germRates+amerRates)
