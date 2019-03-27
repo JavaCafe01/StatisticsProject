@@ -44,21 +44,34 @@ with open('ratingStats.csv') as csvFile:
                 save_to_lists(i, string)
             
 
+goodTotal = len(goodDict[4]) + len(goodDict[5]) + len(goodDict[6])
+badTotal = len(badDict[4]) + len(badDict[5]) + len(badDict[6])
+
+
+
 xLabel = ['Good Ratings', 'Bad Ratings']
-amerRates = np.array([len(amerGoodRates), len(amerBadRates)])
-germRates = np.array([len(germGoodRates), len(germBadRates)])
-indRates = np.array([len(indGoodRates), len(indBadRates)])
+amerRates = np.array([len(goodDict[4])/goodTotal * 100, len(badDict[4])/badTotal * 100])
+germRates = np.array([len(goodDict[5])/goodTotal * 100, len(badDict[5])/badTotal * 100])
+indRates = np.array([len(goodDict[6])/goodTotal * 100, len(badDict[6])/badTotal * 100])
 ind = [x for x, _ in enumerate(xLabel)]
 
-plt.bar(ind, indRates, width=0.8, label='India', color='gold', bottom=germRates+amerRates)
-plt.bar(ind, germRates, width=0.8, label='Germany', color='silver', bottom=amerRates)
-plt.bar(ind, amerRates, width=0.8, label='America', color='#CD853F')
+
+print(len(goodDict[4])/goodTotal * 100)
+print(len(badDict[4])/badTotal * 100)
+print(len(goodDict[5])/goodTotal * 100)
+print(len(badDict[5])/badTotal * 100)
+print(len(goodDict[6])/goodTotal * 100)
+print(len(badDict[6])/badTotal * 100)
+
+
+plt.bar(ind, indRates, width=0.8, label='India', color='#AA650A', bottom=germRates+amerRates)
+plt.bar(ind, germRates, width=0.8, label='Germany', color='#AA0A0A', bottom=amerRates)
+plt.bar(ind, amerRates, width=0.8, label='America', color='#FF880A')
 
 plt.xticks(ind, xLabel)
-plt.ylabel("# of Ratings")
+plt.ylabel("Percentage")
 plt.xlabel("Type of Rating")
 plt.legend(loc="upper right")
-plt.title("Ratings by Country")
+plt.title("Good and Bad Ratings by Country")
 
-
-plt.show()
+plt.savefig('plot', dpi=500)
